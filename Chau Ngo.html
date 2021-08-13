@@ -6,9 +6,9 @@
 <HTML>
 <!-- Latest compiled and minified CSS -->
 <LINK rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<LINK rel="stylesheet" href="styles.css">
+
 <DIV class="container-fluid" style="background-color: lightgoldenrodyellow">
-
-
    <div class="page-header">
       <H2 ALIGN=CENTER> Chau Bao Ngo</H2>
       <H3 ALIGN=CENTER> Master's student of Computer Science</H3>
@@ -24,21 +24,28 @@
       <meta name="resource-type" value="document">
       <meta name="distribution" value="global">
 
-
       <H2> Education </H2>
 
       <UL>
-         <LI TYPE=disc> M.S. in Computer Science, <i>in progress</i>, University of Massachusetts, Boston
+         <LI TYPE=disc> M.S. in Computer Science, <i>December 2021</i>, University of Massachusetts, Boston
          <LI TYPE=disc> B.S. in Computer Science, December 2019, University of Massachusetts, Boston
          <LI TYPE=disc> A.S in Computer Science, August 2017, Bunker Hill Community College
       </UL>
-      <HR>
-      <H2> Work Experience </H2>
+      <div class="astrodivider">
+         <div class="astrodividermask"></div><span>
+            <i>&#10038;</i></span>
+      </div>
 
+      <H2> Work Experience </H2>
       <UL>
-         <LI TYPE=disc> Beaconfire Solution Consultant in East Windsor, New Jersey, NJ.
+         <LI TYPE=disc> Appriss Insights in Louisville, Kentucky <span class="badge badge-secondary">New</span>
             <UL>
-               <LI TYPE=disc> A short-term training batch for fresher Java Developer
+               <LI TYPE=disc> Software Engineer
+               <LI TYPE=disc> Duration: 06/2021 - 08/2021
+            </UL>
+         <LI TYPE=disc> Beaconfire Solution Inc. in East Windsor, New Jersey, NJ.
+            <UL>
+               <LI TYPE=disc> Java Developer
                <LI TYPE=disc> Duration: 06/2020 - 08/2020
             </UL>
          <LI TYPE=disc> Cocoleaf in Dorchester, Boston, MA
@@ -48,7 +55,9 @@
             </UL>
 
       </UL>
-      <HR>
+      <div class="astrodivider">
+         <div class="astrodividermask"></div><span><i>&#10038;</i></span>
+      </div>
       <H2> Certificates </H2>
 
       <UL>
@@ -78,11 +87,56 @@
          <br>
 
       </UL>
-      <HR>
+      <div class="astrodivider">
+         <div class="astrodividermask"></div><span><i>&#10038;</i></span>
+      </div>
+
       <H2> Projects </H2>
       <UL style="margin: auto">
          <LI TYPE=disc, style="margin-bottom: 20">
 
+            <b>Batch Search Functionality <span class="badge badge-secondary">New</span>: </b>
+            The batch search functionality will be located in aws-lambda-components stacks and the main programing
+            language is Python version 3.7.
+            This batch search consists of two tasks: splitting and searching. Splitting will separate the uploaded file
+            into multiple smaller files then it will drop into the appropriate location.
+            The next action after splitting files is to read each split file in order to do the searching accordingly.
+            <ul class="roman" , TYPE=disc, style="margin: 20">
+               <li>The splitter lambda function triggered from S3 bucket creates object event.
+                  File expected to be a text file (with JSON extension) with a key path containing the Saw License name
+                  defined by the regex pattern INPUT_PATH_REGEX.
+                  The file is split by the number of lines given by SPLIT_FILE_LINE_COUNT and is written to the location
+                  given by OUTPUT_PATH_TEMPLATE.
+                  The environmental variables will be defined as below:</li>
+               <ul class="square" ,TYPE=disc, style="margin-top: 20">
+                  <li>FTP_BUCKET - S3 bucket where files are located.
+                  <li>SPLIT_FILE_LINE_COUNT - Number of lines to split the file by.</li>
+                  <li>INPUT_PATH_REGEX - Regex pattern used to extract the License name from the key path.</li>
+                  <li>OUTPUT_PATH_TEMPLATE - Output path to right response files. Must contain place holder for License
+                     name that is compatible with Python's string format function.</li>
+               </ul>
+            </ul>
+
+            <ul class="roman" TYPE=disc, style="margin: 20">
+               <li>The search lambda function triggered from S3 creates object events.
+                  File expected to consist of multiple lines separated by newline characters with each line representing
+                  a flattened JSON search that can be fed directly into the v2/person/search endpoint.
+                  Path to the file will be a key path containing the license name which will be extracted.
+                  Search requests will be made on behalf of the license. Environmental variables include:</li>
+               <ul class="square" , TYPE=disc, style="margin-top: 20">
+                  <li> SAW_HOST - URL Domain of Saw.
+                  <li>FTP_BUCKET - S3 bucket where files are located.</li>
+                  <li>INPUT_PATH_REGEX - Regex pattern used to extract the License name from the key path.</li>
+                  <li>ERROR_FILE_TEMPLATE - Template used for building an object key for an error file.</li>
+                  <li>SAW_CREDS - AWS Secrets Manager secret name used to store SAW API credentials.</li>
+               </ul>
+            </ul>
+
+            <mark class="bg-info">Technologies Used:</mark> Amazon Web Services (AWS) S3, AWS CloudFormation, IntelliJ
+            IDEA,
+            Python version 3.7, Docker, AWS CLI.
+
+         <LI TYPE=disc, style="margin-bottom: 20">
             <a href="https://github.com/ChauNgo1106/Pizza"><b>Pizza order project:</b></a>
             Taking advantage of Slim and Guzzle to produce a
             dynamic web app for the purpose of ordering pizza, the app will be split up
@@ -122,14 +176,20 @@
             option.
             <mark class="bg-info">Technologies Used:</mark>Technologies Used: Android Studio, BBEdit text editor.
       </UL>
-      <HR>
+      <div class="astrodivider">
+         <div class="astrodividermask"></div><span><i>&#10038;</i></span>
+      </div>
+
       <H2> Web Application Development - MERN (MongoDB, Express, React, Nodejs)</H2>
       <UL>
          <LI type="1"> <a href="https://chaungo1106.github.io/Contacts-App/">A Simple Contacts App</a>, its
             basic function
             can add and drop contact information.
       </UL>
-      <HR>
+      <div class="astrodivider">
+         <div class="astrodividermask"></div><span><i>&#10038;</i></span>
+      </div>
+
       <H2> Highlight/Bold Courses</H2>
       <UL>
          <LI TYPE=disc> <i><b>Biomedical and Image Processing </b></i>
@@ -149,6 +209,12 @@
                <LI type="1"> <a
                      href="https://colab.research.google.com/drive/1pgDMI1iT9U7zJ3sw97G9lV6yWQUTV-Xe">Visualization and
                      explore a CT scan of DICOM file </a> by using SliceDrop and Pydicom packages in Python
+               <LI type="1"> <a
+                     href="https://colab.research.google.com/drive/1gNl8qWW3fGI72vZLhTofaujZZTztChFF#scrollTo=E8Cj3bpS5AS4">Training a U-Net classifer
+                  </a> to detect mitochondria in electron microscopy images by using Tensorflow library.
+               <LI type="1"> <a
+                     href="https://colab.research.google.com/drive/1iWML3HUe3kn7DNOvIZ7mpVupRDSwjFs8">Imaging Data Commons</a> is a new service from the National Cancer Institute 
+                     and exploring a PET dataset and then perform a MIP reconstruction by using PET scan.
             </UL>
 
          <LI TYPE=disc> <i><b>Software Development in Java</b></i>
@@ -282,17 +348,23 @@
 
 
       </UL>
-      <HR>
+      <div class="astrodivider">
+         <div class="astrodividermask"></div><span><i>&#10038;</i></span>
+      </div>
+
       <H2> Research Interests</H2>
       <UL>
+         <LI TYPE=round> Association Rules
          <LI TYPE=round> Machine Learning
          <LI TYPE=round> Deep Learning
-         <LI TYPE=round> Neural Networks
-         <LI TYPE=round> Clustering
+         <LI TYPE=round> Data Mining
          <LI TYPE=round> Recommender System
          <LI TYPE=round> MERN Stack Web App Development
       </UL>
-      <HR>
+      <div class="astrodivider">
+         <div class="astrodividermask"></div><span><i>&#10038;</i></span>
+      </div>
+
       <H2> Achievements</H2>
 
       <UL>
@@ -303,7 +375,6 @@
             incomes.
 
       </UL>
-      <HR>
 
    </BODY>
 
